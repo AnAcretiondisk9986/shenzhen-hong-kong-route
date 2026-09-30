@@ -31,6 +31,7 @@ const selectionTime = document.getElementById("selection-time");
 const selectionNote = document.getElementById("selection-note");
 const selectionTags = document.getElementById("selection-tags");
 const selectionTransport = document.getElementById("selection-transport");
+const totalStopCount = document.getElementById("total-stop-count");
 const fitRouteButton = document.getElementById("fit-route");
 const themeToggle = document.getElementById("theme-toggle");
 
@@ -227,6 +228,7 @@ function updateSelectionCard(stop) {
 }
 
 function renderAll() {
+  totalStopCount.textContent = String(trip.stops.length);
   renderDayTabs();
   renderWeatherControls();
   renderRouteList();

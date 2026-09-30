@@ -213,6 +213,43 @@ a:focus-visible {
   margin-top: 1px;
 }
 
+.stay-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+
+.stay-row svg {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+  margin-top: 1px;
+  color: var(--blue);
+}
+
+.stay-row span {
+  min-width: 0;
+}
+
+.stay-row strong,
+.stay-row small {
+  display: block;
+}
+
+.stay-row strong {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.stay-row small {
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
 .section-heading {
   display: flex;
   align-items: center;
