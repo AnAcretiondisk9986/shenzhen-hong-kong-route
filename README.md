@@ -2,7 +2,7 @@
 
 深圳与香港国庆三日路线的静态网页。地图使用 MapLibre GL 和 OpenFreeMap 矢量瓦片，路线、站点和交互全部由 GeoJSON 驱动，缩放时保持清晰。
 
-在线访问：<https://anacretiondisk9986.github.io/shenzhen-hong-kong-route/>
+在线访问：<https://blog.acretiondisk.top/shenzhen-hong-kong-route/>
 
 ## 功能
 
