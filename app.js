@@ -548,6 +548,15 @@ map.addControl(
   })
 );
 
+map.on("styleimagemissing", (event) => {
+  if (event.id !== "wood-pattern" || map.hasImage(event.id)) return;
+  map.addImage(event.id, {
+    width: 1,
+    height: 1,
+    data: new Uint8Array([128, 128, 128, 0])
+  });
+});
+
 map.on("load", () => {
   state.mapReady = true;
   state.styleReady = true;
