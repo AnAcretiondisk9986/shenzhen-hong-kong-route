@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="深圳与香港国庆三日旅行路线图，支持按天查看、雨天替代和站点时间线。"
+    />
+    <title>深圳 × 香港 · 国庆路线图</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">
+          <i data-lucide="map-pinned"></i>
+        </span>
+        <div>
+          <h1>深圳 × 香港 · 国庆 3 日路线</h1>
+          <p>10/1 20:14 抵深 · 10/4 11:13 返温州南</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button
+          class="icon-button"
+          id="fit-route"
+          type="button"
+          aria-label="显示完整路线"
+          data-tooltip="显示完整路线"
+        >
+          <i data-lucide="scan"></i>
+        </button>
+        <button
+          class="icon-button"
+          id="theme-toggle"
+          type="button"
+          aria-label="切换明暗主题"
+          data-tooltip="切换主题"
+        >
+          <i data-lucide="moon"></i>
+        </button>
+      </div>
+    </header>
+
+    <main class="app-shell">
+      <aside class="sidebar" aria-label="行程导航">
+        <section class="trip-overview">
+          <div class="overview-stats" aria-label="路线摘要">
+            <span><strong>3</strong> 天</span>
+            <span><strong>2</strong> 城</span>
+            <span><strong>1</strong> 次跨境</span>
+            <span><strong>22</strong> 站</span>
+          </div>
+          <div class="principle-row">
+            <i data-lucide="route" aria-hidden="true"></i>
+            <span>景点之间坐车，值得看的地方再步行</span>
+          </div>
+        </section>
+
+        <section class="ticket-section" aria-labelledby="tickets-title">
+          <div class="section-heading">
+            <h2 id="tickets-title">车票</h2>
+          </div>
+          <div class="ticket-list" id="ticket-list"></div>
+        </section>
+
+        <section class="route-section" aria-labelledby="route-title">
+          <div class="section-heading route-section-heading">
+            <div>
+              <h2 id="route-title">路线</h2>
+              <p id="route-summary">全部日期 · 22 个站点</p>
+            </div>
+          </div>
+
+          <div
+            class="segmented-scroll day-tabs"
+            id="day-tabs"
+            role="group"
+            aria-label="按日期筛选"
+          ></div>
+
+          <div class="weather-row">
+            <span>天气</span>
+            <div class="segmented-control" role="group" aria-label="天气模式">
+              <button type="button" data-weather="dry" aria-pressed="true">
+                <i data-lucide="sun"></i>
+                晴天
+              </button>
+              <button type="button" data-weather="wet" aria-pressed="false">
+                <i data-lucide="cloud-rain"></i>
+                雨天
+              </button>
+            </div>
+          </div>
+
+          <p class="weather-note" id="weather-note">
+            晴天版保留完整路线。
+          </p>
+
+          <ol class="route-list" id="route-list"></ol>
+        </section>
+      </aside>
+
+      <section class="map-panel" aria-label="路线地图">
+        <div id="map"></div>
+
+        <div class="map-day-summary">
+          <span class="day-dot" id="map-day-dot"></span>
+          <div>
+            <strong id="map-day-title">全部路线</strong>
+            <span id="map-day-meta">22 个站点</span>
+          </div>
+        </div>
+
+        <article class="map-selection" id="map-selection" aria-live="polite">
+          <div class="selection-heading">
+            <span class="selection-badge" id="selection-day"></span>
+            <h2 id="selection-name"></h2>
+            <span id="selection-time"></span>
+          </div>
+          <p id="selection-note"></p>
+          <div class="selection-tags" id="selection-tags"></div>
+          <div class="selection-transport">
+            <i data-lucide="navigation" aria-hidden="true"></i>
+            <span id="selection-transport"></span>
+          </div>
+        </article>
+
+        <div class="map-loading" id="map-loading" role="status">
+          <i data-lucide="loader-circle" aria-hidden="true"></i>
+          <span>正在加载矢量地图…</span>
+        </div>
+      </section>
+    </main>
+
+    <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+    <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
