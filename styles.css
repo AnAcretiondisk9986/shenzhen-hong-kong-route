@@ -213,13 +213,18 @@ a:focus-visible {
   margin-top: 1px;
 }
 
-.stay-row {
-  display: flex;
-  align-items: flex-start;
+.stay-list {
+  display: grid;
   gap: 8px;
   margin-top: 12px;
   padding-top: 12px;
   border-top: 1px solid var(--line);
+}
+
+.stay-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
 }
 
 .stay-row svg {

@@ -21,6 +21,7 @@ const routeList = document.getElementById("route-list");
 const routeSummary = document.getElementById("route-summary");
 const weatherNote = document.getElementById("weather-note");
 const ticketList = document.getElementById("ticket-list");
+const stayList = document.getElementById("stay-list");
 const mapLoading = document.getElementById("map-loading");
 const mapDayDot = document.getElementById("map-day-dot");
 const mapDayTitle = document.getElementById("map-day-title");
@@ -86,6 +87,22 @@ function renderTickets() {
             <span class="ticket-seat">${escapeHtml(ticket.seat)}</span>
           </div>
           <p class="ticket-route">${escapeHtml(ticket.route)}</p>
+        </article>
+      `
+    )
+    .join("");
+}
+
+function renderHotels() {
+  stayList.innerHTML = trip.hotels
+    .map(
+      (hotel) => `
+        <article class="stay-row">
+          <i data-lucide="hotel" aria-hidden="true"></i>
+          <span>
+            <strong>${escapeHtml(hotel.name)}</strong>
+            <small>${escapeHtml(hotel.dates)} · ${escapeHtml(hotel.address)}</small>
+          </span>
         </article>
       `
     )
@@ -196,7 +213,7 @@ function renderWeatherControls() {
   weatherNote.textContent =
     state.weather === "dry"
       ? "晴天版保留完整路线。"
-      : "雨天版取消莲花山和海上世界，并把深圳湾海边缩短。";
+      : "雨天版会缩短莲花山和深圳湾海边，优先商场、CBD 与街区活动。";
 }
 
 function renderSummary() {
@@ -229,6 +246,7 @@ function updateSelectionCard(stop) {
 
 function renderAll() {
   totalStopCount.textContent = String(trip.stops.length);
+  renderHotels();
   renderDayTabs();
   renderWeatherControls();
   renderRouteList();
